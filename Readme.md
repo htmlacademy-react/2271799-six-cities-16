@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Валерия Савченко](https://up.htmlacademy.ru/react/16/user/2271799).
-* Наставник: `Неизвестно`.
+* Наставник: [Yulia Volkova](https://htmlacademy.ru/profile/julie_volkova).
 
 ---
 
