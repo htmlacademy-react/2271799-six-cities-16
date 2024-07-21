@@ -1,6 +1,6 @@
 import CitiesList from '../../components/cities-list/cities-list';
 import Cities from '../../components/cities/cities';
-import Header from '../../components/header.tsx/header';
+import Header from '../../components/header/header';
 import Map from '../../components/map/map';
 import Sort from '../../components/sort/sort';
 
