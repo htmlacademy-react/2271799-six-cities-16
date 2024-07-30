@@ -1,15 +1,17 @@
 import { Helmet } from 'react-helmet-async';
-import CitiesList from '../../components/cities-list/cities-list';
 import Cities from '../../components/cities/cities';
 import Header from '../../components/header/header';
 import Map from '../../components/map/map';
 import Sort from '../../components/sort/sort';
+import OffersList from '../../components/offers-list/offers-list';
+import { TOffers } from '../../types/offers-type';
 
-type MainProps = {
+type TMain = {
   placesCount: number;
+  offers: TOffers[];
 }
 
-function Main({placesCount}: MainProps) : JSX.Element {
+function Main({placesCount, offers}: TMain) : JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -29,7 +31,7 @@ function Main({placesCount}: MainProps) : JSX.Element {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{placesCount} places to stay in Amsterdam</b>
               <Sort />
-              <CitiesList />
+              <OffersList offers={offers} />
             </section>
             <div className="cities__right-section">
               <Map />

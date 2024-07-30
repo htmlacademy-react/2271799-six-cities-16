@@ -7,6 +7,7 @@ import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
+import { offers } from '../../mocks/offers';
 
 type AppProps = {
   placesCount: number;
@@ -19,7 +20,7 @@ function App({placesCount}: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<Main placesCount={placesCount} />}
+            element={<Main placesCount={placesCount} offers={offers} />}
           />
           <Route
             path={AppRoute.Login}
