@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { TOffers } from '../../types/offers-type';
+import { TOffers } from '../../types/offers-cards-type';
 
 type Data = {
   cardInfo: TOffers;
 }
 
 function CardItem({cardInfo}: Data): JSX.Element {
-  const {isPremium, price, title, type, previewImage, rating } = cardInfo;
+  const {isPremium, price, title, type, previewImage, rating, id} = cardInfo;
   const ratingInPercentage = (rating * 100) / 5;
 
   return (
@@ -17,7 +17,7 @@ function CardItem({cardInfo}: Data): JSX.Element {
           <span>Premium</span>
         </div> : ''}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={AppRoute.Offer}>
+        <Link to={AppRoute.Offer.replace(':id', id)}>
           <img
             className="place-card__image"
             src={previewImage}

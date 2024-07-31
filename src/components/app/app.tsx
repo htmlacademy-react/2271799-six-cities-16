@@ -7,13 +7,18 @@ import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { offers } from '../../mocks/offers';
+import { TOffers } from '../../types/offers-cards-type';
+import { TOffer } from '../../types/offer-type';
+import { TReviews } from '../../types/reviews-type';
 
 type AppProps = {
   placesCount: number;
+  offers: TOffers[];
+  offer: TOffer[];
+  reviews: TReviews[];
 }
 
-function App({placesCount}: AppProps): JSX.Element {
+function App({placesCount, offers, offer, reviews}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -36,7 +41,7 @@ function App({placesCount}: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.Offer}
-            element={<Offer />}
+            element={<Offer offers={offer} reviews={reviews}/>}
           />
           <Route
             path="*"

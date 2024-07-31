@@ -1,4 +1,4 @@
-import { TOffers } from '../types/offers-type';
+import { TOffers } from '../types/offers-cards-type';
 
 export const offers: TOffers[] = [
   {

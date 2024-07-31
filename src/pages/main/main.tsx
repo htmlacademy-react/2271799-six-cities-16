@@ -4,7 +4,7 @@ import Header from '../../components/header/header';
 import Map from '../../components/map/map';
 import Sort from '../../components/sort/sort';
 import OffersList from '../../components/offers-list/offers-list';
-import { TOffers } from '../../types/offers-type';
+import { TOffers } from '../../types/offers-cards-type';
 
 type TMain = {
   placesCount: number;
