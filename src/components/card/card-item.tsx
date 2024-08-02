@@ -1,28 +1,30 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, propsByPlace } from '../../const';
 import { TOffers } from '../../types/offers-cards-type';
 
 type Data = {
   cardInfo: TOffers;
+  page: keyof typeof propsByPlace;
 }
 
-function CardItem({cardInfo}: Data): JSX.Element {
+function CardItem({cardInfo, page}: Data): JSX.Element {
   const {isPremium, price, title, type, previewImage, rating, id} = cardInfo;
   const ratingInPercentage = (rating * 100) / 5;
+  const { className, width, height } = propsByPlace[page];
 
   return (
-    <article className="cities__card place-card">
+    <article className={`${className}__card place-card`}>
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
         </div> : ''}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <Link to={AppRoute.Offer.replace(':id', id)}>
           <img
             className="place-card__image"
             src={previewImage}
-            width={260}
-            height={200}
+            width={width}
+            height={height}
             alt="Place image"
           />
         </Link>
@@ -49,7 +51,7 @@ function CardItem({cardInfo}: Data): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: ratingInPercentage }} />
+            <span style={{ width: `${ratingInPercentage}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

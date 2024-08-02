@@ -4,6 +4,7 @@ import OffersDetails from '../../components/offer-details/offer-details';
 import { TOffer } from '../../types/offer-type';
 import { useParams } from 'react-router-dom';
 import { TReviews } from '../../types/reviews-type';
+import CardItem from '../../components/card/card-item';
 
 type TOfferPage = {
   offers: TOffer[];
@@ -29,7 +30,7 @@ function Offer({offers, reviews}: TOfferPage): JSX.Element {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighborhood</h2>
             <div className="near-places__list places__list">
-
+              {currentOffer && (<CardItem cardInfo={currentOffer} page='offer' />)}
             </div>
           </section>
         </div>

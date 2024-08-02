@@ -8,7 +8,7 @@ export const offers: TOffers[] = [
     price: 234,
     previewImage: 'https://16.design.htmlacademy.pro/static/hotel/8.jpg',
     city: {
-      name: 'Paris',
+      name: 'Cologne',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -43,7 +43,7 @@ export const offers: TOffers[] = [
       longitude: 2.330499,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 1.5
   },
@@ -54,7 +54,7 @@ export const offers: TOffers[] = [
     price: 233,
     previewImage: 'https://16.design.htmlacademy.pro/static/hotel/4.jpg',
     city: {
-      name: 'Paris',
+      name: 'Amsterdam',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -66,7 +66,7 @@ export const offers: TOffers[] = [
       longitude: 2.335499,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: true,
     rating: 3.9
   },
@@ -77,7 +77,7 @@ export const offers: TOffers[] = [
     price: 299,
     previewImage: 'https://16.design.htmlacademy.pro/static/hotel/9.jpg',
     city: {
-      name: 'Paris',
+      name: 'Amsterdam',
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
@@ -89,7 +89,7 @@ export const offers: TOffers[] = [
       longitude: 2.358499,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: true,
     rating: 2.6
   },
