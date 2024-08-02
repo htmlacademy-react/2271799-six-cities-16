@@ -14,6 +14,11 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+const LimitCharactersEnter = {
+  Max: 300,
+  Min: 50,
+} as const;
+
 const propsByPlace = {
   main: {
     className: 'cities',
@@ -32,4 +37,4 @@ const propsByPlace = {
   }
 };
 
-export {CITIES, placesCount, propsByPlace};
+export {CITIES, placesCount, propsByPlace, LimitCharactersEnter};

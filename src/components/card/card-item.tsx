@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, propsByPlace } from '../../const';
 import { TOffers } from '../../types/offers-cards-type';
+import { useState } from 'react';
 
 type Data = {
   cardInfo: TOffers;
@@ -9,11 +10,26 @@ type Data = {
 
 function CardItem({cardInfo, page}: Data): JSX.Element {
   const {isPremium, price, title, type, previewImage, rating, id} = cardInfo;
+
+  const [idCard, setIdCard] = useState<string | null>(null);
+
+  const handleMouseEnter = (): void => {
+    setIdCard(id);
+  };
+
+  const handleMouseLeave = (): void => {
+    setIdCard(null);
+  };
+
   const ratingInPercentage = (rating * 100) / 5;
   const { className, width, height } = propsByPlace[page];
 
   return (
-    <article className={`${className}__card place-card`}>
+    <article
+      className={`${className}__card place-card ${idCard === id ? 'place-card--active' : ''}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
