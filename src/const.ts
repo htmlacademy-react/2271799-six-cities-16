@@ -14,4 +14,27 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export {CITIES, placesCount};
+const LimitCharactersEnter = {
+  Max: 300,
+  Min: 50,
+} as const;
+
+const propsByPlace = {
+  main: {
+    className: 'cities',
+    width: 260,
+    height: 200
+  },
+  offer: {
+    className: 'near-places',
+    width: 260,
+    height: 200
+  },
+  favorite: {
+    className: 'favorites',
+    width: 150,
+    height: 110
+  }
+};
+
+export {CITIES, placesCount, propsByPlace, LimitCharactersEnter};

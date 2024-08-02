@@ -7,19 +7,25 @@ import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
+import { TOffers } from '../../types/offers-cards-type';
+import { TOffer } from '../../types/offer-type';
+import { TReviews } from '../../types/reviews-type';
 
 type AppProps = {
   placesCount: number;
+  offers: TOffers[];
+  offer: TOffer[];
+  reviews: TReviews[];
 }
 
-function App({placesCount}: AppProps): JSX.Element {
+function App({placesCount, offers, offer, reviews}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<Main placesCount={placesCount} />}
+            element={<Main placesCount={placesCount} offers={offers} />}
           />
           <Route
             path={AppRoute.Login}
@@ -28,14 +34,14 @@ function App({placesCount}: AppProps): JSX.Element {
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth} >
-                <Favorites />
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth} >
+                <Favorites offers={offers}/>
               </PrivateRoute>
             }
           />
           <Route
             path={AppRoute.Offer}
-            element={<Offer />}
+            element={<Offer offers={offer} reviews={reviews}/>}
           />
           <Route
             path="*"
