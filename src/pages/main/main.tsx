@@ -10,11 +10,10 @@ import { TCity } from '../../types/cities-type';
 import { CITIES } from '../../const';
 
 type TMain = {
-  placesCount: number;
   offers: TOffers[];
 }
 
-function Main({ placesCount, offers }: TMain): JSX.Element {
+function Main({ offers }: TMain): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<TOffers | null>(null);
 
   const handleOfferHover = (offer?: TOffers) => {
@@ -29,6 +28,8 @@ function Main({ placesCount, offers }: TMain): JSX.Element {
       setSelectedCity(selected);
     }
   };
+
+  const offersByCity = offers.filter((offer) => offer.city.name === selectedCity.name);
 
   return (
     <div className="page page--gray page--main">
@@ -47,9 +48,9 @@ function Main({ placesCount, offers }: TMain): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+              <b className="places__found">{offersByCity.length} places to stay in {selectedCity.name}</b>
               <Sort />
-              <OffersList offers={offers} onCardHover={handleOfferHover} />
+              <OffersList offers={offersByCity} onCardHover={handleOfferHover} />
             </section>
             <div className="cities__right-section">
               <Map className='cities' activeOffer={activeOffer} offers={offers} city={selectedCity} />

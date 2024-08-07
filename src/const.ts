@@ -49,9 +49,6 @@ const CITIES = [
   }
 ] as const;
 
-
-const placesCount = 20;
-
 export enum AppRoute {
   Main = '/',
   Login = '/login',
@@ -93,4 +90,4 @@ const propsByPlace = {
   }
 };
 
-export {CITIES, placesCount, propsByPlace, LimitCharactersEnter};
+export {CITIES, propsByPlace, LimitCharactersEnter};

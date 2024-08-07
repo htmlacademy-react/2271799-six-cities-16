@@ -12,20 +12,19 @@ import { TOffer } from '../../types/offer-type';
 import { TReviews } from '../../types/reviews-type';
 
 type AppProps = {
-  placesCount: number;
   offers: TOffers[];
   offer: TOffer[];
   reviews: TReviews[];
 }
 
-function App({placesCount, offers, offer, reviews}: AppProps): JSX.Element {
+function App({offers, offer, reviews}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<Main placesCount={placesCount} offers={offers} />}
+            element={<Main offers={offers} />}
           />
           <Route
             path={AppRoute.Login}
