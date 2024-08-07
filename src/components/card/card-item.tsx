@@ -5,8 +5,8 @@ import { TOffers } from '../../types/offers-cards-type';
 type Data = {
   cardInfo: TOffers;
   page: keyof typeof propsByPlace;
-  onCardMouseEnter: () => void;
-  onCardMouseLeave: () => void;
+  onCardMouseEnter?: () => void;
+  onCardMouseLeave?: () => void;
 }
 
 function CardItem({cardInfo, page, onCardMouseEnter, onCardMouseLeave}: Data): JSX.Element {
