@@ -67,6 +67,8 @@ export enum MapMarkers {
   Active = 'markup/img/pin-active.svg'
 }
 
+const MAX_COUNT_NEAR_PLACES = 3;
+
 const LimitCharactersEnter = {
   Max: 300,
   Min: 50,
@@ -90,4 +92,4 @@ const propsByPlace = {
   }
 };
 
-export {CITIES, propsByPlace, LimitCharactersEnter};
+export {CITIES, propsByPlace, LimitCharactersEnter, MAX_COUNT_NEAR_PLACES};

@@ -6,7 +6,7 @@ export const reviews: TReviews[] = [
     date: '2019-05-08T14:13:56.569Z',
     user: {
       name: 'David Wilson',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: '../../markup/img/avatar-max.jpg',
       isPro: false
     },
     comment: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
@@ -17,7 +17,7 @@ export const reviews: TReviews[] = [
     date: '2019-05-08T14:13:56.569Z',
     user: {
       name: 'Ron Nelson',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: '../../markup/img/avatar-max.jpg',
       isPro: true
     },
     comment: 'I love the description. It sounds like a charming apartment in the heart of Paris. The price is reasonable too, making it an attractive option for travelers.',
@@ -28,7 +28,7 @@ export const reviews: TReviews[] = [
     date: '2019-05-08T14:13:56.569Z',
     user: {
       name: 'Andrew Thomas',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: '../../markup/img/avatar-max.jpg',
       isPro: false
     },
     comment: 'Being a premium hotel with a good rating, it must offer excellent amenities and a stunning view',
@@ -39,7 +39,7 @@ export const reviews: TReviews[] = [
     date: '2019-05-08T14:13:56.569Z',
     user: {
       name: 'Laura Anderson',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: '../../markup/img/avatar-angelina.jpg',
       isPro: false
     },
     comment: 'The details provided for the offers are very helpful. It is great to see a variety of options ranging from penthouses to cozy apartments, catering to different preferences and budgets',
@@ -50,7 +50,7 @@ export const reviews: TReviews[] = [
     date: '2019-05-08T14:13:56.569Z',
     user: {
       name: 'Lisa Moore',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: '../../markup/img/avatar-angelina.jpg',
       isPro: false
     },
     comment: 'The premium apartment listed last looks especially appealing with its 100% rating. It must be a top-notch place to stay, offering high-quality service and comfort',
@@ -61,7 +61,7 @@ export const reviews: TReviews[] = [
     date: '2019-05-08T14:13:56.569Z',
     user: {
       name: 'John Smith',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: '../../markup/img/avatar-max.jpg',
       isPro: false
     },
     comment: 'The bookmarks feature is very useful. Being able to save and compare different options helps in choosing the best rental for one needs',
