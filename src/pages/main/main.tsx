@@ -5,13 +5,32 @@ import Map from '../../components/map/map';
 import Sort from '../../components/sort/sort';
 import OffersList from '../../components/offers-list/offers-list';
 import { TOffers } from '../../types/offers-cards-type';
+import { useState } from 'react';
+import { TCity } from '../../types/cities-type';
+import { CITIES } from '../../const';
 
 type TMain = {
-  placesCount: number;
   offers: TOffers[];
 }
 
-function Main({placesCount, offers}: TMain) : JSX.Element {
+function Main({ offers }: TMain): JSX.Element {
+  const [activeOffer, setActiveOffer] = useState<TOffers | null>(null);
+
+  const handleOfferHover = (offer?: TOffers) => {
+    setActiveOffer(offer || null);
+  };
+
+  const [selectedCity, setSelectedCity] = useState<TCity>(CITIES[0]);
+
+  const handleCityClick = (cityName: string) => {
+    const selected = CITIES.find((city) => city.name === cityName);
+    if (selected) {
+      setSelectedCity(selected);
+    }
+  };
+
+  const offersByCity = offers.filter((offer) => offer.city.name === selectedCity.name);
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -22,19 +41,19 @@ function Main({placesCount, offers}: TMain) : JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <Cities />
+            <Cities selectedCity={selectedCity} onCityClick={handleCityClick} />
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+              <b className="places__found">{offersByCity.length} places to stay in {selectedCity.name}</b>
               <Sort />
-              <OffersList offers={offers} />
+              <OffersList offers={offersByCity} onCardHover={handleOfferHover} />
             </section>
             <div className="cities__right-section">
-              <Map />
+              <Map className='cities' activeOffer={activeOffer} offers={offers} city={selectedCity} />
             </div>
           </div>
         </div>
