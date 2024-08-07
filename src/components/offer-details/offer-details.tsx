@@ -6,9 +6,11 @@ import Reviews from '../review/reviews';
 type TOfferPage = {
   offer: TOffer;
   reviews: TReviews[];
+  offers: TOffer[];
+  activeOffer: TOffer;
 }
 
-function OffersDetails({offer, reviews}: TOfferPage): JSX.Element {
+function OffersDetails({offer, reviews, offers, activeOffer}: TOfferPage): JSX.Element {
   const {title, images, type, goods, price, bedrooms, rating, isPremium, maxAdults, host, description} = offer;
   return (
     <section className="offer">
@@ -92,7 +94,7 @@ function OffersDetails({offer, reviews}: TOfferPage): JSX.Element {
 
         </div>
       </div>
-      <Map className='offer' city={offer.city}/>
+      <Map className='offer' city={offer.city} offers={offers} activeOffer={activeOffer}/>
     </section>
   );
 }
