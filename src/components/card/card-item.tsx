@@ -1,34 +1,25 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, propsByPlace } from '../../const';
 import { TOffers } from '../../types/offers-cards-type';
-import { useState } from 'react';
 
 type Data = {
   cardInfo: TOffers;
   page: keyof typeof propsByPlace;
+  onCardMouseEnter: () => void;
+  onCardMouseLeave: () => void;
 }
 
-function CardItem({cardInfo, page}: Data): JSX.Element {
+function CardItem({cardInfo, page, onCardMouseEnter, onCardMouseLeave}: Data): JSX.Element {
   const {isPremium, price, title, type, previewImage, rating, id} = cardInfo;
-
-  const [idCard, setIdCard] = useState<string | null>(null);
-
-  const handleMouseEnter = (): void => {
-    setIdCard(id);
-  };
-
-  const handleMouseLeave = (): void => {
-    setIdCard(null);
-  };
 
   const ratingInPercentage = (rating * 100) / 5;
   const { className, width, height } = propsByPlace[page];
 
   return (
     <article
-      className={`${className}__card place-card ${idCard === id ? 'place-card--active' : ''}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className={`${className}__card place-card`}
+      onMouseEnter={onCardMouseEnter}
+      onMouseLeave={onCardMouseLeave}
     >
       {isPremium ?
         <div className="place-card__mark">
