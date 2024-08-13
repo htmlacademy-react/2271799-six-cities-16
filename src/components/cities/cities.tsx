@@ -9,6 +9,7 @@ type CityProps = {
 
 function Cities({selectedCity, onCityClick }: CityProps): JSX.Element {
 
+
   const cityItem = (cityName: TCity) => (
     <li className="locations__item" key={cityName.name} onClick={() => onCityClick(cityName.name)}>
       <Link className={`locations__item-link tabs__item ${selectedCity?.name === cityName.name ? 'tabs__item--active' : ''}`} to='#'>
