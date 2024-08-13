@@ -6,30 +6,28 @@ import Sort from '../../components/sort/sort';
 import OffersList from '../../components/offers-list/offers-list';
 import { TOffers } from '../../types/offers-cards-type';
 import { useState } from 'react';
-import { TCity } from '../../types/cities-type';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeCity } from '../../store/action';
 import { CITIES } from '../../const';
 
-type TMain = {
-  offers: TOffers[];
-}
-
-function Main({ offers }: TMain): JSX.Element {
+function Main(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<TOffers | null>(null);
 
   const handleOfferHover = (offer?: TOffers) => {
     setActiveOffer(offer || null);
   };
 
-  const [selectedCity, setSelectedCity] = useState<TCity>(CITIES[0]);
+  const city = useAppSelector((state) => state.city);
+  const dispatch = useAppDispatch();
 
-  const handleCityClick = (cityName: string) => {
-    const selected = CITIES.find((city) => city.name === cityName);
-    if (selected) {
-      setSelectedCity(selected);
+  const handleCityClick = (cityName: string): void => {
+    const selectedCity = CITIES.find((item) => item.name === cityName);
+    if (selectedCity) {
+      dispatch(changeCity(selectedCity));
     }
   };
 
-  const offersByCity = offers.filter((offer) => offer.city.name === selectedCity.name);
+  const offers = useAppSelector((state) => state.offers);
 
   return (
     <div className="page page--gray page--main">
@@ -41,19 +39,19 @@ function Main({ offers }: TMain): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <Cities selectedCity={selectedCity} onCityClick={handleCityClick} />
+            <Cities selectedCity={city} onCityClick={handleCityClick} />
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersByCity.length} places to stay in {selectedCity.name}</b>
+              <b className="places__found">{offers.length} places to stay in {city.name}</b>
               <Sort />
-              <OffersList offers={offersByCity} onCardHover={handleOfferHover} />
+              <OffersList onCardHover={handleOfferHover} />
             </section>
             <div className="cities__right-section">
-              <Map className='cities' activeOffer={activeOffer} offers={offers} city={selectedCity} />
+              <Map className='cities' activeOffer={activeOffer} offers={offers} city={city} />
             </div>
           </div>
         </div>
