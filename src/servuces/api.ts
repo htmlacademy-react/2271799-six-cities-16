@@ -11,3 +11,5 @@ export const createAPI = (): AxiosInstance => {
 
   return api;
 };
+
+// console.log(createAPI, 'api')
