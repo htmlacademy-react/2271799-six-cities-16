@@ -1,13 +1,12 @@
-import { useAppSelector } from '../../hooks';
 import { TOffers } from '../../types/offers-cards-type';
 import CardItem from '../card/card-item';
 
 type TCardInfo = {
+  offers: TOffers[];
   onCardHover: (offer?: TOffers) => void;
 }
 
-function OffersList({ onCardHover }: TCardInfo): JSX.Element {
-  const offers = useAppSelector((state) => state.offers);
+function OffersList({ offers, onCardHover }: TCardInfo): JSX.Element {
   const handleCardMouseEnter = (offer: TOffers) => {
     onCardHover(offer);
   };

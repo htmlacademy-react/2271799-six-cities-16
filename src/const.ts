@@ -67,6 +67,13 @@ export enum MapMarkers {
   Active = 'markup/img/pin-active.svg'
 }
 
+const SortingMap = {
+  Popular: 'Popular',
+  LowToHigh: 'Price: low to high',
+  HighToLow: 'Price: high to low',
+  TopRated: 'Top rated first',
+} as const;
+
 const MAX_COUNT_NEAR_PLACES = 3;
 
 const LimitCharactersEnter = {
@@ -92,4 +99,4 @@ const propsByPlace = {
   }
 };
 
-export {CITIES, propsByPlace, LimitCharactersEnter, MAX_COUNT_NEAR_PLACES};
+export {CITIES, propsByPlace, LimitCharactersEnter, MAX_COUNT_NEAR_PLACES, SortingMap};

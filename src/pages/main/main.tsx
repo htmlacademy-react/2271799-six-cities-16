@@ -8,10 +8,18 @@ import { TOffers } from '../../types/offers-cards-type';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { changeCity } from '../../store/action';
-import { CITIES } from '../../const';
+import { CITIES, SortingMap } from '../../const';
+import { TSort } from '../../types/sort-type';
+import { sorting } from '../../utils';
 
 function Main(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<TOffers | null>(null);
+
+  const [activeSort, setActiveSort] = useState<TSort>(SortingMap.Popular);
+
+  function handleSortChange(type: TSort) {
+    setActiveSort(type);
+  }
 
   const handleOfferHover = (offer?: TOffers) => {
     setActiveOffer(offer || null);
@@ -47,8 +55,8 @@ function Main(): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offers.length} places to stay in {city.name}</b>
-              <Sort />
-              <OffersList onCardHover={handleOfferHover} />
+              <Sort activeSort={activeSort} onChange={handleSortChange}/>
+              <OffersList onCardHover={handleOfferHover} offers={sorting[activeSort](offers)} />
             </section>
             <div className="cities__right-section">
               <Map className='cities' activeOffer={activeOffer} offers={offers} city={city} />
