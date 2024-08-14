@@ -7,17 +7,18 @@ import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { TOffers } from '../../types/offers-cards-type';
 import { TOffer } from '../../types/offer-type';
 import { TReviews } from '../../types/reviews-type';
+import { useAppSelector } from '../../hooks';
 
 type AppProps = {
-  offers: TOffers[];
   offer: TOffer[];
   reviews: TReviews[];
 }
 
-function App({offers, offer, reviews}: AppProps): JSX.Element {
+function App({ offer, reviews}: AppProps): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
+
   return (
     <HelmetProvider>
       <BrowserRouter>
