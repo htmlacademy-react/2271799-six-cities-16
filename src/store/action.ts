@@ -8,3 +8,5 @@ export const changeCity = createAction<TCity>('city/changeCity');
 export const getOffers = createAction<TOffers[]>('offers/getOffers');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+
+export const setError = createAction<string | null>('offer/setError');
