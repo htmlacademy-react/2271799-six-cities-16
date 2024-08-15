@@ -105,4 +105,6 @@ const propsByPlace = {
   }
 };
 
+export const TIMEOUT_SHOW_ERROR = 2000;
+
 export {CITIES, propsByPlace, LimitCharactersEnter, MAX_COUNT_NEAR_PLACES, SortingMap};
