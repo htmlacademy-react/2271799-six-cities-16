@@ -1,12 +1,14 @@
 import {createReducer} from '@reduxjs/toolkit';
-import { changeCity, getOffers, requireAuthorization, setDataLoadingStatus, setError } from './action';
+import { changeCity, getOffer, getOffers, requireAuthorization, setDataLoadingStatus, setError } from './action';
 import { AuthorizationStatus, CITIES } from '../const';
 import { TCity } from '../types/cities-type';
 import { TOffers } from '../types/offers-cards-type';
+import { TOffer } from '../types/offer-type';
 
 type State = {
   city: TCity;
   offers: TOffers[];
+  offer: TOffer | null;
   authorizationStatus: (typeof AuthorizationStatus)[keyof typeof AuthorizationStatus];
   error: string | null;
   isDataLoading: boolean;
@@ -15,6 +17,7 @@ type State = {
 const initialState: State = {
   city: CITIES[0],
   offers: [],
+  offer: null,
   authorizationStatus: AuthorizationStatus.Unknown,
   error: null,
   isDataLoading: false
@@ -29,6 +32,9 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(getOffers, (state, action) => {
       state.offers = action.payload;
+    })
+    .addCase(getOffer, (state, action) => {
+      state.offer = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;

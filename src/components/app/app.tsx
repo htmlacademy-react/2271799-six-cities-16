@@ -8,16 +8,16 @@ import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { TOffer } from '../../types/offer-type';
-import { TReviews } from '../../types/reviews-type';
+// import { TReviews } from '../../types/reviews-type';
 import { useAppSelector } from '../../hooks';
 import Loading from '../../pages/loading/loading';
 
 type AppProps = {
   offer: TOffer[];
-  reviews: TReviews[];
+  // reviews: TReviews[];
 }
 
-function App({ offer, reviews}: AppProps): JSX.Element {
+function App({ offer}: AppProps): JSX.Element {
   const offers = useAppSelector((state) => state.offers);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const loadingStatus = useAppSelector((state) => state.isDataLoading);
@@ -50,7 +50,7 @@ function App({ offer, reviews}: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.Offer}
-            element={<Offer offers={offer} reviews={reviews}/>}
+            element={<Offer offers={offer}/>}
           />
           <Route
             path="*"

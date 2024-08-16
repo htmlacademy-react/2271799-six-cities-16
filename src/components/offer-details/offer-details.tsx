@@ -1,16 +1,16 @@
 import { TOffer } from '../../types/offer-type';
-import { TReviews } from '../../types/reviews-type';
+// import { TReviews } from '../../types/reviews-type';
 import Map from '../map/map';
-import Reviews from '../review/reviews';
+// import Reviews from '../review/reviews';
 
 type TOfferPage = {
   offer: TOffer;
-  reviews: TReviews[];
+  // reviews: TReviews[];
   offers: TOffer[];
   activeOffer: TOffer;
 }
 
-function OffersDetails({offer, reviews, offers, activeOffer}: TOfferPage): JSX.Element {
+function OffersDetails({offer, offers, activeOffer}: TOfferPage): JSX.Element {
   const {title, images, type, goods, price, bedrooms, rating, isPremium, maxAdults, host, description} = offer;
   return (
     <section className="offer">
@@ -90,7 +90,7 @@ function OffersDetails({offer, reviews, offers, activeOffer}: TOfferPage): JSX.E
               </p>
             </div>
           </div>
-          <Reviews reviews={reviews}/>
+          {/* <Reviews reviews={reviews}/> */}
 
         </div>
       </div>

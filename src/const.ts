@@ -53,7 +53,7 @@ export enum AppRoute {
   Main = '/',
   Login = '/login',
   Favorites = '/favorites',
-  Offer = '/offer/:id'
+  Offer = '/offers/:id'
 }
 
 export enum APIRoute {
