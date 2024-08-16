@@ -10,6 +10,7 @@ import PrivateRoute from '../private-route/private-route';
 import { TOffer } from '../../types/offer-type';
 import { TReviews } from '../../types/reviews-type';
 import { useAppSelector } from '../../hooks';
+import Loading from '../../pages/loading/loading';
 
 type AppProps = {
   offer: TOffer[];
@@ -18,6 +19,14 @@ type AppProps = {
 
 function App({ offer, reviews}: AppProps): JSX.Element {
   const offers = useAppSelector((state) => state.offers);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const loadingStatus = useAppSelector((state) => state.isDataLoading);
+
+  if(authorizationStatus === AuthorizationStatus.Unknown || loadingStatus) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <HelmetProvider>
