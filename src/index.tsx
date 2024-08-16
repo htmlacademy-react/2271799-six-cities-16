@@ -6,6 +6,7 @@ import { offer } from './mocks/offer';
 import { reviews } from './mocks/reviews';
 import { store } from './store';
 import { fetchOffersAction } from './store/api-action';
+import ErrorMessage from './components/error/error-message';
 
 store.dispatch(fetchOffersAction());
 
@@ -16,6 +17,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store} >
+      <ErrorMessage />
       <App offer={offer} reviews={reviews}/>
     </Provider>
   </React.StrictMode>
