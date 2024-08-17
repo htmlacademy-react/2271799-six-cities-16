@@ -2,13 +2,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types/state';
 import { AxiosInstance } from 'axios';
 import { TOffers } from '../types/offers-cards-type';
-import { getOffer, getOffers, requireAuthorization, setDataLoadingStatus, setError } from './action';
+import { getOffer, getOffers, getReviews, requireAuthorization, setDataLoadingStatus, setError } from './action';
 import { dropToken, saveToken } from '../services/token';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
 import { TAuth } from '../types/auth-type';
 import { TUser } from '../types/user-type';
 import { store } from '.';
 import { TOffer } from '../types/offer-type';
+import { TReviews } from '../types/reviews-type';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -33,6 +34,19 @@ export const fetchOfferAction = createAsyncThunk<TOffer, string | undefined, {
   async (offerId, { dispatch, extra: api }) => {
     const { data } = await api.get<TOffer>(`${APIRoute.Offers}/${offerId}`);
     dispatch(getOffer(data));
+    return data;
+  },
+);
+
+export const fetchReviewsAction = createAsyncThunk<TReviews[], string | undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'offer/fetchOffer',
+  async (offerId, { dispatch, extra: api }) => {
+    const { data } = await api.get<TReviews[]>(`${APIRoute.Comments}/${offerId}`);
+    dispatch(getReviews(data));
     return data;
   },
 );

@@ -7,24 +7,24 @@ import { useParams } from 'react-router-dom';
 import CardItem from '../../components/card/card-item';
 import { MAX_COUNT_NEAR_PLACES } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchOfferAction } from '../../store/api-action';
+import { fetchOfferAction, fetchReviewsAction } from '../../store/api-action';
 import { useEffect } from 'react';
 
 type TOfferPage = {
   offers: TOffer[];
-  // reviews: TReviews[];
 }
 
 function Offer({offers}: TOfferPage): JSX.Element {
   const {id} = useParams<{ id: string | undefined }>();
   const nearPlacesOffers = offers.slice(0, MAX_COUNT_NEAR_PLACES);
   const offer = useAppSelector((state) => state.offer);
-
+  const reviews = useAppSelector((state) => state.reviews);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (id) {
       dispatch(fetchOfferAction(id));
+      dispatch(fetchReviewsAction(id));
     }
   }, [dispatch, id]);
 
@@ -36,7 +36,7 @@ function Offer({offers}: TOfferPage): JSX.Element {
       <Header />
       <main className="page__main page__main--offer">
         {offer ?
-          <OffersDetails offer={offer} key={offer.id} offers={nearPlacesOffers} activeOffer={offer}/>
+          <OffersDetails reviews={reviews} offer={offer} key={offer.id} offers={nearPlacesOffers} activeOffer={offer}/>
           : ''}
 
         <div className="container">
