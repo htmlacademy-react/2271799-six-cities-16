@@ -5,8 +5,8 @@ import Reviews from '../review/reviews';
 
 type TOfferPage = {
   offer: TOffer;
-  reviews: TReviews[];
-  offers: TOffer[];
+  reviews: TReviews[] | null;
+  offers: TOffer[] | null;
   activeOffer: TOffer;
 }
 
@@ -90,7 +90,7 @@ function OffersDetails({offer, reviews, offers, activeOffer}: TOfferPage): JSX.E
               </p>
             </div>
           </div>
-          <Reviews reviews={reviews}/>
+          { reviews && <Reviews reviews={reviews}/>}
 
         </div>
       </div>

@@ -7,17 +7,20 @@ import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { TOffers } from '../../types/offers-cards-type';
-import { TOffer } from '../../types/offer-type';
-import { TReviews } from '../../types/reviews-type';
+import { useAppSelector } from '../../hooks';
+import Loading from '../../pages/loading/loading';
 
-type AppProps = {
-  offers: TOffers[];
-  offer: TOffer[];
-  reviews: TReviews[];
-}
+function App(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const loadingStatus = useAppSelector((state) => state.isDataLoading);
 
-function App({offers, offer, reviews}: AppProps): JSX.Element {
+  if(authorizationStatus === AuthorizationStatus.Unknown || loadingStatus) {
+    return (
+      <Loading />
+    );
+  }
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -40,7 +43,7 @@ function App({offers, offer, reviews}: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.Offer}
-            element={<Offer offers={offer} reviews={reviews}/>}
+            element={<Offer />}
           />
           <Route
             path="*"

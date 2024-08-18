@@ -53,7 +53,15 @@ export enum AppRoute {
   Main = '/',
   Login = '/login',
   Favorites = '/favorites',
-  Offer = '/offer/:id'
+  Offer = '/offers/:id'
+}
+
+export enum APIRoute {
+  Offers = 'offers',
+  Login = '/login',
+  Logout = '/logout',
+  Comments = '/comments',
+  Nearby = 'nearby'
 }
 
 export enum AuthorizationStatus {
@@ -98,5 +106,7 @@ const propsByPlace = {
     height: 110
   }
 };
+
+export const TIMEOUT_SHOW_ERROR = 2000;
 
 export {CITIES, propsByPlace, LimitCharactersEnter, MAX_COUNT_NEAR_PLACES, SortingMap};

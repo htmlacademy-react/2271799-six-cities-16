@@ -36,6 +36,7 @@ function Main(): JSX.Element {
   };
 
   const offers = useAppSelector((state) => state.offers);
+  const offersByCity = offers.filter((offer) => offer.city?.name === city.name);
 
   return (
     <div className="page page--gray page--main">
@@ -56,10 +57,10 @@ function Main(): JSX.Element {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offers.length} places to stay in {city.name}</b>
               <Sort activeSort={activeSort} onChange={handleSortChange}/>
-              <OffersList onCardHover={handleOfferHover} offers={sorting[activeSort](offers)} />
+              <OffersList onCardHover={handleOfferHover} offers={sorting[activeSort](offersByCity)} />
             </section>
             <div className="cities__right-section">
-              <Map className='cities' activeOffer={activeOffer} offers={offers} city={city} />
+              <Map className='cities' activeOffer={activeOffer} offers={offersByCity} city={city} />
             </div>
           </div>
         </div>

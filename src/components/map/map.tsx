@@ -6,11 +6,12 @@ import { TCity } from '../../types/cities-type';
 import { MapMarkers } from '../../const';
 import useMap from '../../hooks/use-map';
 import { TOffers } from '../../types/offers-cards-type';
+import { TOffer } from '../../types/offer-type';
 
 type MapProps = {
   className: string;
   city: TCity;
-  offers?: TOffers[];
+  offers?: TOffer[] | null;
   activeOffer?: TOffers | null;
 };
 
