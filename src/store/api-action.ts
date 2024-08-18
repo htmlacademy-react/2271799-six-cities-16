@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types/state';
 import { AxiosInstance } from 'axios';
-import { TOffers } from '../types/offers-cards-type';
 import { getNearPlaces, getOffer, getOffers, getReviews, requireAuthorization, setDataLoadingStatus, setError } from './action';
 import { dropToken, saveToken } from '../services/token';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
@@ -19,7 +18,7 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   'offers/fetchOffers',
   async (_arg, {dispatch, extra: api}) => {
     dispatch(setDataLoadingStatus(true));
-    const {data} = await api.get<TOffers[]>(APIRoute.Offers);
+    const {data} = await api.get<TOffer[]>(APIRoute.Offers);
     dispatch(setDataLoadingStatus(false));
     dispatch(getOffers(data));
   },
