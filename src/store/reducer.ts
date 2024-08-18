@@ -2,13 +2,12 @@ import {createReducer} from '@reduxjs/toolkit';
 import { changeCity, getNearPlaces, getOffer, getOffers, getReviews, requireAuthorization, setDataLoadingStatus, setError } from './action';
 import { AuthorizationStatus, CITIES } from '../const';
 import { TCity } from '../types/cities-type';
-import { TOffers } from '../types/offers-cards-type';
 import { TOffer } from '../types/offer-type';
 import { TReviews } from '../types/reviews-type';
 
 type State = {
   city: TCity;
-  offers: TOffers[];
+  offers: TOffer[];
   offer: TOffer | null;
   reviews: TReviews[] | null;
   nearPlaces: TOffer[] | null;
