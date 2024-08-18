@@ -13,6 +13,8 @@ export const getOffer = createAction<TOffer | null>('offer/getOffer');
 
 export const getReviews = createAction<TReviews[] | null>('reviews/getComments');
 
+export const getNearPlaces = createAction<TOffer[] | null>('offer/getNearPlaces');
+
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 
 export const setError = createAction<string | null>('offer/setError');

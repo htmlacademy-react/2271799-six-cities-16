@@ -6,7 +6,7 @@ import Reviews from '../review/reviews';
 type TOfferPage = {
   offer: TOffer;
   reviews: TReviews[] | null;
-  offers: TOffer[];
+  offers: TOffer[] | null;
   activeOffer: TOffer;
 }
 

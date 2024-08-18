@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types/state';
 import { AxiosInstance } from 'axios';
 import { TOffers } from '../types/offers-cards-type';
-import { getOffer, getOffers, getReviews, requireAuthorization, setDataLoadingStatus, setError } from './action';
+import { getNearPlaces, getOffer, getOffers, getReviews, requireAuthorization, setDataLoadingStatus, setError } from './action';
 import { dropToken, saveToken } from '../services/token';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
 import { TAuth } from '../types/auth-type';
@@ -43,10 +43,23 @@ export const fetchReviewsAction = createAsyncThunk<TReviews[], string | undefine
   state: State;
   extra: AxiosInstance;
 }>(
-  'offer/fetchOffer',
+  'offer/fetchReviews',
   async (offerId, { dispatch, extra: api }) => {
     const { data } = await api.get<TReviews[]>(`${APIRoute.Comments}/${offerId}`);
     dispatch(getReviews(data));
+    return data;
+  },
+);
+
+export const fetchNearPlacesAction = createAsyncThunk<TOffer[], string | undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'offer/fetchNearPlaces',
+  async (offerId, { dispatch, extra: api }) => {
+    const { data } = await api.get<TOffer[]>(`${APIRoute.Offers}/${offerId}/${APIRoute.Nearby}`);
+    dispatch(getNearPlaces(data));
     return data;
   },
 );
