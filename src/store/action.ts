@@ -3,6 +3,7 @@ import { TCity } from '../types/cities-type';
 import { AuthorizationStatus } from '../const';
 import { TOffer } from '../types/offer-type';
 import { TReviews } from '../types/reviews-type';
+import { TUser } from '../types/user-type';
 
 export const changeCity = createAction<TCity>('city/changeCity');
 
@@ -19,3 +20,7 @@ export const requireAuthorization = createAction<AuthorizationStatus>('user/requ
 export const setError = createAction<string | null>('offer/setError');
 
 export const setDataLoadingStatus = createAction<boolean>('data/setDataLoadingStatus');
+
+export const setUser = createAction<TUser | null>('user/setUser');
+
+export const clearUser = createAction('user/clearUser');

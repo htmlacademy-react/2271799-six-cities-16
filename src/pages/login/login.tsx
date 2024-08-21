@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { FormEvent, useRef } from 'react';
 import { useAppDispatch } from '../../hooks';
@@ -9,6 +9,7 @@ import { loginAction } from '../../store/api-action';
 function Login(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
 
@@ -19,7 +20,11 @@ function Login(): JSX.Element {
       dispatch(loginAction({
         login: loginRef.current.value,
         password: passwordRef.current.value
-      }));
+      }))
+        .unwrap()
+        .then(() => {
+          navigate(AppRoute.Main);
+        });
     }
   };
 

@@ -1,5 +1,5 @@
 export type TUser = {
-  id: number;
+  id?: number;
   email: string;
-  token: string;
+  token?: string;
 };
