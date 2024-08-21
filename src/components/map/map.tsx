@@ -7,6 +7,7 @@ import { MapMarkers } from '../../const';
 import useMap from '../../hooks/use-map';
 import { TOffers } from '../../types/offers-cards-type';
 import { TOffer } from '../../types/offer-type';
+import './map-styles.css';
 
 type MapProps = {
   className: string;
@@ -58,8 +59,7 @@ function Map({className, city, offers, activeOffer}: MapProps): JSX.Element {
 
   return (
     <section
-      className={`${className}__map map`}
-      style={{height: '500px'}}
+      className={`${className}__map map map__style`}
       ref={mapRef}
     />
   );

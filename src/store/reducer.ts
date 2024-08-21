@@ -1,9 +1,10 @@
 import {createReducer} from '@reduxjs/toolkit';
-import { changeCity, getNearPlaces, getOffer, getOffers, getReviews, requireAuthorization, setDataLoadingStatus, setError } from './action';
+import { changeCity, clearUser, getNearPlaces, getOffer, getOffers, getReviews, requireAuthorization, setDataLoadingStatus, setError, setUser } from './action';
 import { AuthorizationStatus, CITIES } from '../const';
 import { TCity } from '../types/cities-type';
 import { TOffer } from '../types/offer-type';
 import { TReviews } from '../types/reviews-type';
+import { TUser } from '../types/user-type';
 
 type State = {
   city: TCity;
@@ -14,6 +15,7 @@ type State = {
   authorizationStatus: (typeof AuthorizationStatus)[keyof typeof AuthorizationStatus];
   error: string | null;
   isDataLoading: boolean;
+  user: TUser | null;
 };
 
 const initialState: State = {
@@ -24,7 +26,8 @@ const initialState: State = {
   nearPlaces: [],
   authorizationStatus: AuthorizationStatus.Unknown,
   error: null,
-  isDataLoading: false
+  isDataLoading: false,
+  user: null
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -48,6 +51,12 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
+    })
+    .addCase(setUser, (state, action) => {
+      state.user = action.payload;
+    })
+    .addCase(clearUser, (state) => {
+      state.user = null;
     })
     .addCase(setError, (state, action) => {
       state.error = action.payload;
